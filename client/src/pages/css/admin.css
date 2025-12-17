@@ -1,0 +1,379 @@
+/* ====== Layout ====== */
+.main-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: #f6f8fa;
+  color: #24292f;
+}
+
+/* ====== Sidebar ====== */
+.sidebar {
+  width: 280px;
+  background-color: #ffffff; /* светлый фон */
+  color: #24292f; /* тёмный текст */
+  padding: 20px;
+  box-shadow: 1px 0 0 #d0d7de;
+  overflow-y: auto;
+  border-right: 1px solid #d0d7de;
+}
+
+.sidebar h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #24292f;
+  margin-bottom: 16px;
+  border-left: 4px solid #0077cc;
+  padding-left: 12px;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-item {
+  background: #f6f8fa;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  border: 1px solid #d0d7de;
+  transition: background-color 0.2s ease;
+  color: #24292f;
+}
+
+.user-item:hover {
+  background-color: #c3e0f5;
+  cursor: pointer;
+}
+
+/* ====== Storage Panel ====== */
+.storage-container {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+}
+
+.storage-container h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #24292f;
+  border-left: 4px solid #0077cc;
+  padding-left: 12px;
+  margin-bottom: 24px;
+}
+
+/* ====== File Upload Button ====== */
+.upload-label {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 10px 18px;
+  background-color: #0077cc;
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.upload-label:hover {
+  background-color: #00538f;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* ====== Search ====== */
+.storage-container input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.storage-container input[type="text"]:focus {
+  border-color: #0077cc;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.2);
+}
+
+/* ====== Error ====== */
+.error {
+  color: #cf222e;
+  background-color: #ffebe9;
+  border: 1px solid #d8a3a3;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* ====== File List ====== */
+.file-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ====== File Card ====== */
+.file-item {
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 18px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.file-item:hover {
+  box-shadow: 0 4px 8px rgba(27, 31, 35, 0.08);
+}
+
+.file-item span {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2328;
+}
+
+
+/* ====== Actions ====== */
+.file-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Кнопки в одном стиле зелёные */
+.file-actions button,
+.upload-label {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #1574b8;
+  color: white;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 100px; /* фиксированная ширина */
+  text-align: center;
+}
+
+
+
+.file-actions button:hover,
+.upload-label:hover {
+  background-color: #016db9;
+}
+
+/* Disabled кнопки */
+.file-actions button:disabled {
+  background-color: #cbd5d9;
+  color: #8b949e;
+  cursor: not-allowed;
+}
+
+/* ====== Empty Result ====== */
+.file-list p {
+  font-style: italic;
+  color: #57606a;
+  padding: 10px;
+  text-align: center;
+}
+
+/* ====== Адаптив ====== */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .storage-container {
+    padding: 20px;
+  }
+
+  .file-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .file-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* ====== Кнопка "Добавить пользователя" ====== */
+.btn-add-user {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 20px; /* Отступ снизу */
+  display: inline-block;
+}
+
+.btn-add-user:hover {
+  background-color: #218838;
+}
+
+.btn-add-user:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+}
+
+/* === Modal Overlay (фон) === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* === Modal Window === */
+.modal {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px; /* ширина окна */
+  box-sizing: border-box;
+}
+
+/* === Заголовок === */
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #24292f;
+}
+
+/* === Форма === */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Метки и поля === */
+.modal-form label {
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #24292f;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Все input и select внутри формы */
+.modal-form input,
+.modal-form select {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 6px;
+}
+
+.modal-form input:focus,
+.modal-form select:focus {
+  border-color: #0077cc;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.2);
+}
+
+/* === Кнопки действий === */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+.modal-actions button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.modal-actions button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.modal-actions button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+.btn-delete-user {
+  background-color: #dc3545; /* Красный */
+  color: white;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-left: 10px;
+}
+
+.btn-delete-user:hover {
+  background-color: #c82333;
+}
+
+.btn-delete-user:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.4);
+}
